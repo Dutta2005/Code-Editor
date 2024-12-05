@@ -44,7 +44,7 @@ const Output = ({ editorRef, language }) => {
       <Textarea
         height={isMobile ? "15vh" : "30vh"}
         mt={2}
-        color="#fff"
+        color="white"
         border="1px solid"
         borderRadius={4}
         borderColor="#333"
