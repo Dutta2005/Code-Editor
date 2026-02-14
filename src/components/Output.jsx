@@ -7,7 +7,6 @@ const Output = ({ editorRef, language }) => {
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState(false);
   const [input, setInput] = React.useState("");
-  const isMobile = useBreakpointValue({ base: true, md: false });
 
   const runCode = async () => {
     const sourceCode = editorRef.current.getValue();
@@ -28,45 +27,51 @@ const Output = ({ editorRef, language }) => {
   };
 
   return (
-    <Box w={isMobile ? '100%' : '50%'}>
+    <Box w="100%" h="100%" display="flex" flexDirection="column">
       <Button
         variant="outline"
         colorScheme="green"
         mb={4}
         isLoading={loading}
         onClick={runCode}
+        alignSelf="flex-start" // Keep button left-aligned
       >
         Run Code
       </Button>
-      <Text mb={2} fontSize="lg">
-        Input
-      </Text>
-      <Textarea
-        height={isMobile ? "15vh" : "30vh"}
-        mt={2}
-        color="white"
-        border="1px solid"
-        borderRadius={4}
-        borderColor="#333"
-        overflow="auto"
-        placeholder="Enter input (If any)"
-        onChange={(e) => setInput(e.target.value)}
-      ></Textarea>
-      <Text mb={2} fontSize="lg">
-        Output
-      </Text>
-      <Box
-        height={isMobile ? "20vh" : "50vh"}
-        p={2}
-        mt={4}
-        border="1px solid #333"
-        color={error ? "red.500" : "white"}
-        borderColor={error ? "red.500" : "#333"}
-        overflowY="auto"
-      >
-        {output
-          ? output.map((line, index) => <Text key={index}>{line}</Text>)
-          : "Click 'Run Code' to see the output"}
+
+      <Box flex="1" display="flex" flexDirection="column" gap={2} minH="0">
+        {/* Input Section */}
+        <Text fontSize="lg" fontWeight="bold">Input</Text>
+        <Textarea
+          flex="1" // Take available space
+          w="100%"
+          color="white"
+          border="1px solid"
+          borderRadius={4}
+          borderColor="#333"
+          resize="none" // Prevent resize breaking layout
+          placeholder="Enter input (If any)"
+          onChange={(e) => setInput(e.target.value)}
+          bg="gray.900"
+        />
+
+        {/* Output Section */}
+        <Text fontSize="lg" fontWeight="bold" mt={2}>Output</Text>
+        <Box
+          flex="1" // Take available space
+          w="100%"
+          p={2}
+          border="1px solid"
+          borderRadius={4}
+          borderColor={error ? "red.500" : "#333"}
+          color={error ? "red.500" : "white"}
+          bg="gray.900"
+          overflowY="auto"
+        >
+          {output
+            ? output.map((line, index) => <Text key={index}>{line}</Text>)
+            : <Text color="gray.500">Click 'Run Code' to see the output</Text>}
+        </Box>
       </Box>
     </Box>
   );

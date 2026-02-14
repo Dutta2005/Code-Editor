@@ -30,11 +30,11 @@ function App() {
   return (
     <Router>
       <Flex direction="column" minH="100vh" bg="#0f0a19" color="gray.500">
-        <Box bg="#0f0a19" color="gray.500" px={4} py={8}>
+        <Box bg="#0f0a19" color="gray.500" px={4} py={4}>
           <Header user={authValue.user} onLogout={onLogout} />
         </Box>
 
-        <Box flex="1" px={4} py={8}>
+        <Box flex="1" px={4} pb={4}>
           <Routes>
             <Route path="/" element={<CodeEditor token={authValue.token} />} />
             <Route

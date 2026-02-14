@@ -52,3 +52,19 @@ export const updateHistory = async (req, res) => {
     return res.status(500).json({ message: "Failed to update history.", error: error.message });
   }
 };
+
+export const deleteHistory = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const entry = await CodeHistory.findOneAndDelete({ _id: id, user: req.user.id });
+
+    if (!entry) {
+      return res.status(404).json({ message: "History entry not found." });
+    }
+
+    return res.json({ message: "History entry deleted.", id });
+  } catch (error) {
+    return res.status(500).json({ message: "Failed to delete history.", error: error.message });
+  }
+};

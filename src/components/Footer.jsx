@@ -5,7 +5,7 @@ import { SiX } from "react-icons/si";
 
 export default function Footer() {
   return (
-    <Box as="footer" py={12} bg="gray.900" color="gray.500" textAlign="center">
+    <Box as="footer" py={5} bg="gray.900" color="gray.500" textAlign="center">
       <Text fontSize="lg" mb={4}>
         Made by{" "}
         <Link

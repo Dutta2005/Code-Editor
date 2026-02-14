@@ -19,10 +19,7 @@ const LanguageSelector = ({ language, onSelect }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
-    <Box mb={4} ml={2}>
-      <Text mb={2} fontSize="lg">
-        Language
-      </Text>
+    <Box mb={2} ml={2}>
       <Menu isLazy onOpen={onOpen} onClose={onClose}>
         <MenuButton
           as={Button}

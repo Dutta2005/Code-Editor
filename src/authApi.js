@@ -36,3 +36,10 @@ export const updateHistory = async (token, id, payload) => {
   });
   return response.data;
 };
+
+export const deleteHistoryById = async (token, id) => {
+  const response = await authClient.delete(`/history/${id}`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  return response.data;
+};
