@@ -1,12 +1,56 @@
-# React + Vite
+# Code Editor (MERN)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project now includes:
+- React + Vite frontend code editor.
+- Express + MongoDB backend for authentication and code history.
+- Save, retrieve, and update code snippets per logged-in user.
 
-Currently, two official plugins are available:
+## Features
+- User registration and login with JWT auth via a dedicated `/login` page.
+- Save code snippets to MongoDB history.
+- Retrieve history and load snippets back into the editor.
+- Update an existing saved snippet.
+- Save button shows **"Please login first"** when not authenticated.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-<<<<<<< HEAD
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-=======
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
->>>>>>> 4dad59d1fc80e8156ebfe8714fcedd19a6699a72
+## Project Structure
+- `src/` - React frontend.
+- `server/` - Express + MongoDB backend.
+
+## Setup
+
+### 1) Frontend
+```bash
+npm install
+npm run dev
+```
+
+### 2) Backend
+```bash
+cd server
+npm install
+cp .env.example .env
+# update .env values
+npm run dev
+```
+
+## Environment Variables
+
+### Frontend (`.env` in repo root)
+```bash
+VITE_SERVER_URL=http://localhost:5000
+```
+
+### Backend (`server/.env`)
+```bash
+PORT=5000
+MONGO_URI=mongodb+srv://codeeditor:codeeditor123@cluster0.k2wum.mongodb.net/code_editor
+JWT_SECRET=your-strong-secret
+CLIENT_URL=http://localhost:5173
+```
+
+## API Endpoints
+- `POST /api/auth/register`
+- `POST /api/auth/login`
+- `GET /api/history` (auth)
+- `POST /api/history` (auth)
+- `PUT /api/history/:id` (auth)

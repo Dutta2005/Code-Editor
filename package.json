@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "server": "npm --prefix server run dev"
   },
   "dependencies": {
     "@chakra-ui/icons": "^2.2.4",
