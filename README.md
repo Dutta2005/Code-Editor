@@ -43,7 +43,7 @@ VITE_SERVER_URL=http://localhost:5000
 ### Backend (`server/.env`)
 ```bash
 PORT=5000
-MONGO_URI=mongodb+srv://codeeditor:codeeditor123@cluster0.k2wum.mongodb.net/code_editor
+MONGO_URI=your_mongo_uri
 JWT_SECRET=your-strong-secret
 CLIENT_URL=http://localhost:5173
 ```
